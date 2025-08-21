@@ -1,4 +1,6 @@
-from collections import defaultdict, Counter
+#!/usr/bin/env python3
+from collections import Counter
+import sys
 
 def parse_genotypes(allele_strs):
     """Convert genotype string to list of alleles, e.g. '0/1' => ['0', '1']."""
@@ -63,14 +65,12 @@ def filter_to_top_two(line):
     cols[9:] = new_samples
     return "\t".join(cols) + "\n"
 
-# --- Main execution ---
-vcf_in = "scaffold1_het_ref_filtered.vcf"
-vcf_out = "scaffold1_biallelic_filtered.vcf"
-
-with open(vcf_in) as fin, open(vcf_out, "w") as fout:
-    for line in fin:
-        if line.startswith("#"):
-            fout.write(line)
-        else:
-            fout.write(filter_to_top_two(line))
+if __name__ == "__main__":
+    vcf_in, vcf_out = sys.argv[1:3]
+    with open(vcf_in) as fin, open(vcf_out, "w") as fout:
+        for line in fin:
+            if line.startswith("#"):
+                fout.write(line)
+            else:
+                fout.write(filter_to_top_two(line))
 
