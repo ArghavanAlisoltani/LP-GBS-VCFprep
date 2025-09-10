@@ -1,5 +1,6 @@
 #CSI indexes (not TBI)
-bcftools index -c filtered.vcf.gz
+#module load bcftools/1.8
+bcftools index -c All_1a1b_renamed.vcf.gz
 #or
 #samtools index -c alignments.bam (BAM).
 
