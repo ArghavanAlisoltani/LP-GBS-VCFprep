@@ -29,7 +29,7 @@ plink2 --vcf step1.vcf.gz --allow-extra-chr --make-bed --out tmp
 plink2 --bfile tmp --genome gz --out related
 
 #########################################################################################
-#Site QC
+#Site-level hard filters (repeats/paralogs are the enemy)
 #########################################################################################
 #---------------------------------------------------------------------------------------#
 #3. Site-level_snapshot
