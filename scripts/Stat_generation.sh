@@ -31,11 +31,30 @@ plink2 --bfile tmp --genome gz --out related
 #########################################################################################
 #Site-level hard filters (repeats/paralogs are the enemy)
 #########################################################################################
-#---------------------------------------------------------------------------------------#
-#3. Site-level_snapshot
+#5_Site-level_snapshot
 bcftools query -f '%CHROM\t%POS\t%QUAL\t%INFO/DP\t%INFO/NS\t%INFO/MQ\t%INFO/AN\t%INFO/AC\t%INFO/AF\n' ../All_1a1b_renamed.vcf.gz
 
-#---------------------------------------------------------------------------------------#
 bcftools query -f '%CHROM\t%POS[\t%DP]\n' ../All_1a1b_renamed.vcf.gz
+
+#---------------------------------------------------------------------------------------#
+#6_Normalize & split multi-allelics, keep biallelic SNPs
+bcftools norm -f reference.fa -m-any ../All_1a1b_renamed.vcf.gz -Oz -o step2.norm.vcf.gz
+bcftools view -v snps -m2 -M2 -Oz -o step2.snps.vcf.gz step2.norm.vcf.gz
+bcftools index -c step2.snps.vcf.gz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
