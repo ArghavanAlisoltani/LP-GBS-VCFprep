@@ -9,24 +9,25 @@ bcftools index -c All_1a1b_renamed.vcf.gz
 #samtools index -c alignments.bam (BAM).
 
 #---------------------------------------------------------------------------------------#
-#1. Missingness per individual
+#1_Missingness_per_individual
 module load vcftools/0.1.16
 vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --missing-indv
 
 #---------------------------------------------------------------------------------------#
-#2. Depth per individual
+#2_Depth_per_individual
 vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --depth
 
 
 #---------------------------------------------------------------------------------------#
-#3. Heterozygosity outliers (paralogs/contamination)
-
-
+#3_Heterozygosity_outliers 
+#(paralogs/contamination)
+vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --het
 
 #---------------------------------------------------------------------------------------#
+#4_Duplicates_close_relatives & swaps (optional but useful)
+plink2 --vcf step1.vcf.gz --allow-extra-chr --make-bed --out tmp
+plink2 --bfile tmp --genome gz --out related
 
-
-Duplicates/close relatives & swaps (optional but useful)
 #########################################################################################
 #Site QC
 #########################################################################################
