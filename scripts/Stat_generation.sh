@@ -4,6 +4,8 @@
 #---------------------------------------------------------------------------------------#
 #0. CSI indexes (not TBI)
 module load bcftools/1.8
+bcftools index -c -f All_1a1b_renamed.vcf.gz
+#or
 bcftools index -c All_1a1b_renamed.vcf.gz
 #or
 #samtools index -c alignments.bam (BAM).
