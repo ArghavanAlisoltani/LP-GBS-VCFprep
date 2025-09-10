@@ -22,6 +22,6 @@ vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --depth
 bcftools query -f '%CHROM\t%POS\t%QUAL\t%INFO/DP\t%INFO/NS\t%INFO/MQ\t%INFO/AN\t%INFO/AC\t%INFO/AF\n' ../All_1a1b_renamed.vcf.gz
 
 #---------------------------------------------------------------------------------------#
-bcftools query -f '%CHROM\t%POS[\t%DP]\n' file.vcf.gz
+bcftools query -f '%CHROM\t%POS[\t%DP]\n' ../All_1a1b_renamed.vcf.gz
 
 
