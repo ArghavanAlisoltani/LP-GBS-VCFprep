@@ -2,7 +2,8 @@
 #Sample QC
 #########################################################################################
 #---------------------------------------------------------------------------------------#
-#0. CSI indexes (not TBI)
+#0. CSI indexes (not TBI)
+
 module load bcftools/1.8
 bcftools index -c -f All_1a1b_renamed.vcf.gz
 #or
@@ -18,7 +19,6 @@ vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --missing-indv
 #---------------------------------------------------------------------------------------#
 #2_Depth_per_individual
 vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --depth
-
 
 #---------------------------------------------------------------------------------------#
 #3_Heterozygosity_outliers 
