@@ -11,6 +11,20 @@ bcftools index -c All_1a1b_renamed.vcf.gz
 #or
 #samtools index -c alignments.bam (BAM).
 
+# 1) Compress to bgzip'd VCF
+bcftools view -Oz -o renamed_samples_1489_merged_sorted_tworules.vcf.gz \
+  renamed_samples_1489_merged_sorted_tworules.vcf
+
+# (optional but smart) ensure position-sorted before indexing
+bcftools sort -Oz -o renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz \
+  renamed_samples_1489_merged_sorted_tworules.vcf.gz
+
+# 2) Make a CSI index (works with long scaffolds)
+bcftools index -f -c renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz
+
+# 3) Sanity check
+bcftools idxstats renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz | head
+
 #---------------------------------------------------------------------------------------#
 #1_Missingness_per_individual
 module load vcftools/0.1.16
