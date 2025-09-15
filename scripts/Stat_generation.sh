@@ -27,16 +27,16 @@ bcftools idxstats renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz | he
 #---------------------------------------------------------------------------------------#
 #1_Missingness_per_individual
 module load vcftools/0.1.16
-vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --missing-indv
+vcftools --gzvcf renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz --missing-indv
 
 #---------------------------------------------------------------------------------------#
 #2_Depth_per_individual
-vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --depth
+vcftools --gzvcf renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz --depth
 
 #---------------------------------------------------------------------------------------#
 #3_Heterozygosity_outliers 
 #(paralogs/contamination)
-vcftools --gzvcf ../All_1a1b_renamed.vcf.gz --het
+vcftools --gzvcf renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz --het
 
 #---------------------------------------------------------------------------------------#
 #4_Duplicates_close_relatives & swaps (optional but useful)
