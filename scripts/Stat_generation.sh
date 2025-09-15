@@ -47,6 +47,11 @@ plink2 --bfile tmp --genome gz --out related
 #########################################################################################
 #Site-level hard filters (repeats/paralogs are the enemy)
 #########################################################################################
+# keep only polymorphics
+bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_All_1a1b_renamed.vcf.gz s100_All_1a1b_renamed.vcf.gz
+
+
+
 #5_Site-level_snapshot
 bcftools query -f '%CHROM\t%POS\t%QUAL\t%INFO/DP\t%INFO/NS\t%INFO/MQ\t%INFO/AN\t%INFO/AC\t%INFO/AF\n' ../All_1a1b_renamed.vcf.gz
 
