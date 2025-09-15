@@ -2,16 +2,7 @@
 #Sample QC
 #########################################################################################
 #---------------------------------------------------------------------------------------#
-#0. CSI indexes (not TBI)
-
-module load bcftools/1.8
-bcftools index -c -f All_1a1b_renamed.vcf.gz
-#or
-bcftools index -c All_1a1b_renamed.vcf.gz
-#or
-#samtools index -c alignments.bam (BAM).
-
-# 1) Compress to bgzip'd VCF
+#0. Compress to bgzip'd VCF
 bcftools view -Oz -o renamed_samples_1489_merged_sorted_tworules.vcf.gz \
   renamed_samples_1489_merged_sorted_tworules.vcf
 
@@ -19,6 +10,14 @@ bcftools view -Oz -o renamed_samples_1489_merged_sorted_tworules.vcf.gz \
 bcftools sort -Oz -o renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz \
   renamed_samples_1489_merged_sorted_tworules.vcf.gz
 
+CSI indexes (not TBI)
+
+module load bcftools/1.8
+bcftools index -c -f renamed_samples_1489_merged_sorted_tworules.vcf.gz
+#or
+bcftools index -c renamed_samples_1489_merged_sorted_tworules.vcf.gz
+#or
+#samtools index -c alignments.bam (BAM).
 # 2) Make a CSI index (works with long scaffolds)
 bcftools index -f -c renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz
 
