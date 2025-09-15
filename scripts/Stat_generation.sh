@@ -3,6 +3,7 @@
 #########################################################################################
 #---------------------------------------------------------------------------------------#
 #0. Compress to bgzip'd VCF
+module load bcftools/1.8
 bcftools view -Oz -o renamed_samples_1489_merged_sorted_tworules.vcf.gz \
   renamed_samples_1489_merged_sorted_tworules.vcf
 
@@ -10,8 +11,7 @@ bcftools view -Oz -o renamed_samples_1489_merged_sorted_tworules.vcf.gz \
 bcftools sort -Oz -o renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz \
   renamed_samples_1489_merged_sorted_tworules.vcf.gz
 
-CSI indexes (not TBI)
-
+# 1) CSI indexes (not TBI)
 module load bcftools/1.8
 bcftools index -c -f renamed_samples_1489_merged_sorted_tworules.vcf.gz
 #or
