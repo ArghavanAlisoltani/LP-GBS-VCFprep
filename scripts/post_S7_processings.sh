@@ -13,16 +13,16 @@ bcftools sort -Oz -o renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz \
 
 # 1) CSI indexes (not TBI)
 module load bcftools/1.8
-bcftools index -c -f renamed_samples_1489_merged_sorted_tworules.vcf.gz
+bcftools index -c -f renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
 #or
-bcftools index -c renamed_samples_1489_merged_sorted_tworules.vcf.gz
+bcftools index -c renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
 #or
 #samtools index -c alignments.bam (BAM).
 # 2) Make a CSI index (works with long scaffolds)
-bcftools index -f -c renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz
+bcftools index -f -c renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
 
 # 3) Sanity check
-bcftools idxstats renamed_samples_1489_merged_sorted_tworules.sorted.vcf.gz | head
+bcftools idxstats renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz | head
 
 #---------------------------------------------------------------------------------------#
 #1_Missingness_per_individual
