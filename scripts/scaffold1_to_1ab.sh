@@ -44,3 +44,9 @@ $1 == CHR {
     # Inside the gap → drop and warn
     print "WARN: Dropping variant in gap at " CHR ":" pos > "/dev/stderr"
     next;
+  }
+  print; next;
+}
+# Any other chromosome/scaffold: pass through unchanged
+{ print }
+' "$IN" > "$OUT"
