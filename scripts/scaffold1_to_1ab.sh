@@ -21,3 +21,26 @@ BEGIN {
   contig_done = 1;
   next;
 }
+# If there was no contig line for scaffold_1, inject the two just before #CHROM
+/^#CHROM/ {
+  if (!contig_done) {
+    printf("##contig=<ID=%s,length=%d>\n", A, GAP_END);
+    printf("##contig=<ID=%s,length=%d>\n", B, b_len);
+    contig_done = 1;
+  }
+  print; next;
+}
+# Other header lines: pass through
+/^#/ { print; next }
+
+# Body lines
+$1 == CHR {
+  pos = $2 + 0
+  if (pos <= GAP_END) {
+    $1 = A;                             # 1a, keep position
+  } else if (pos >= OFFSET) {
+    $1 = B; $2 = pos - OFFSET + 1;      # 1b, shift position
+  } else {
+    # Inside the gap → drop and warn
+    print "WARN: Dropping variant in gap at " CHR ":" pos > "/dev/stderr"
+    next;
