@@ -1,4 +1,4 @@
-# inputs you gave (change here if needed)
+# inputs yougave (change here if needed)
 IN="scaffold_1_tworules.sorted.vcf"
 OUT="scaffold_1ab_tworules.sorted.vcf"
 
