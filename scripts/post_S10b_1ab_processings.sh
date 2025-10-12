@@ -13,7 +13,7 @@ bcftools sort -Oz -o renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz \
 
 # 1) CSI indexes (not TBI)
 module load bcftools/1.8
-bcftools index -c -f renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
+bcftools index -c -f poly_s100_All_1a1b_renamed.vcf.gz
 #or
 bcftools index -c renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
 #or
