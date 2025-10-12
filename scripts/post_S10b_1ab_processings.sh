@@ -24,6 +24,8 @@ bcftools index -f -c renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz
 # 3) Sanity check
 bcftools idxstats renamed_1ab_samples_1489_merged_sorted_tworules.vcf.gz | head
 
+# 4) Is there any site in the selected region
+bcftools view "/scratch/arghavan/LP/subsampling/poly_s100_All_1a1b_renamed.vcf.gz" "scaffold_2:300000000-350000000" | wc -l
 #---------------------------------------------------------------------------------------#
 #1_Missingness_per_individual
 module load vcftools/0.1.16
