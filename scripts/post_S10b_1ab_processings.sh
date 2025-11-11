@@ -68,13 +68,14 @@ bcftools view -v snps -m2 -M2 -Oz -o step2.snps.vcf.gz step2.norm.vcf.gz
 bcftools index -c step2.snps.vcf.gz
 
 
-#sub sampling
+#sub sampling for other scaffolds
 bcftools view   -S 100_greedy_selected.txt   -Oz -o s100_exclude24_imputed.vcf.gz exclude24_imputed.vcf.gz
 
 # index subsampled data
 bcftools index -c s100_exclude24_imputed.vcf.gz
 
-
+# 
+bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_All_1a1b_renamed.vcf.gz s100_All_1a1b_renamed.vcf.gz
 
 
 #get range of scaffolds
