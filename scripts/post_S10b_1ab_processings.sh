@@ -77,6 +77,7 @@ bcftools index -c s100_exclude24_imputed.vcf.gz
 # drop monomorphic sites
 bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_exclude24_imputed.vcf.gz s100_exclude24_imputed.vcf.gz
 
+bcftools index -c poly_s100_exclude24_imputed.vcf.gz
 
 #get range of scaffolds
 bcftools query -f '%CHROM\t%POS\n' poly_s100_exclude24_imputed.vcf.gz \
