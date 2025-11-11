@@ -72,7 +72,7 @@ bcftools index -c step2.snps.vcf.gz
 bcftools view   -S 100_greedy_selected.txt   -Oz -o s100_exclude24_imputed.vcf.gz exclude24_imputed.vcf.gz
 
 # index subsampled data
-bcftools index -c s100_All_1a1b_renamed.vcf.gz
+bcftools index -c s100_exclude24_imputed.vcf.gz
 
 
 
