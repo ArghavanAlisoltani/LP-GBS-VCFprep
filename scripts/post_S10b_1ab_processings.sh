@@ -74,7 +74,7 @@ bcftools view   -S 100_greedy_selected.txt   -Oz -o s100_exclude24_imputed.vcf.g
 # index subsampled data
 bcftools index -c s100_exclude24_imputed.vcf.gz
 
-# 
+# drop monomorphic sites
 bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_All_1a1b_renamed.vcf.gz s100_All_1a1b_renamed.vcf.gz
 
 
