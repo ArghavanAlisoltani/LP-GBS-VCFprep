@@ -16,6 +16,8 @@ module load bcftools/1.8
 bcftools index -c -f poly_s100_All_1a1b_renamed.vcf.gz
 #or
 bcftools index -c poly_s100_All_1a1b_renamed.vcf.gz
+
+bcftools index -c exclude24_imputed.vcf.gz
 #or
 #samtools index -c alignments.bam (BAM).
 # 2) Make a CSI index (works with long scaffolds)
@@ -66,6 +68,11 @@ bcftools view -v snps -m2 -M2 -Oz -o step2.snps.vcf.gz step2.norm.vcf.gz
 bcftools index -c step2.snps.vcf.gz
 
 
+#sub sampling
+bcftools view   -S 100_greedy_selected.txt   -Oz -o s100_exclude24_imputed.vcf.gz exclude24_imputed.vcf.gz
+
+# index subsampled data
+bcftools index -c s100_All_1a1b_renamed.vcf.gz
 
 
 
