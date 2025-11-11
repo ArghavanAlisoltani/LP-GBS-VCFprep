@@ -75,7 +75,7 @@ bcftools view   -S 100_greedy_selected.txt   -Oz -o s100_exclude24_imputed.vcf.g
 bcftools index -c s100_exclude24_imputed.vcf.gz
 
 # drop monomorphic sites
-bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_All_1a1b_renamed.vcf.gz s100_All_1a1b_renamed.vcf.gz
+bcftools view -i 'AC>0 && AC<AN' -Oz -o poly_s100_exclude24_imputed.vcf.gz s100_exclude24_imputed.vcf.gz
 
 
 #get range of scaffolds
