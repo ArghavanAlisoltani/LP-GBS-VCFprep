@@ -77,6 +77,17 @@ bcftools index -c s100_exclude24_imputed.vcf.gz
 
 
 
+#get range of scaffolds
+bcftools query -f '%CHROM\t%POS\n' poly_s100_exclude24_imputed.vcf.gz \
+| awk '{
+  c=$1; p=$2
+  if (!(c in min) || p < min[c]) min[c] = p
+  if (!(c in max) || p > max[c]) max[c] = p
+  n[c]++
+}
+END {
+  for (c in min) printf "%s\t%s\t%s\t%s\n", c, min[c], max[c], n[c]
+}' | sort -k1,1V >> ranges_poly_s100_exclude24_imputed.vcf.gz.tsv
 
 
 
